@@ -25,7 +25,7 @@ public class KD_tree {
     }
 
     public void traverseTree (Node startNode) {
-        System.out.println(startNode.k_vals);
+        System.out.println(startNode.k_vals + " level:" + startNode.currentLevel);
 
         if (startNode.left_child != null) {
             for (int i=0; i<startNode.left_child.currentLevel; i++) System.out.print("\t");
@@ -127,6 +127,49 @@ public class KD_tree {
         return returnNode;
     }
 
+    public ArrayList<Node> searchNode (Node startNode, Node lowerBound, Node upperBound) {
+        ArrayList<Node> nodes = new ArrayList<>();
+
+        if (root == null) return nodes;
+
+        correctBounds(lowerBound, upperBound);
+        searchNode(startNode, lowerBound, upperBound, nodes);
+
+        return nodes;
+    }
+
+    private void searchNode (Node startNode, Node lowerBound, Node upperBound, ArrayList<Node> nodes) {
+//        if ()
+        int comparableIndex = startNode.currentLevel%nodeSize;
+        if (startNode.k_vals.get(comparableIndex) > lowerBound.k_vals.get(comparableIndex)) {
+            if (startNode.left_child != null)
+                searchNode(startNode.left_child, lowerBound, upperBound, nodes);
+        }
+
+        boolean isMatch = true;
+        for (int i=0; i<nodeSize; i++) {
+            if (startNode.k_vals.get(i) < lowerBound.k_vals.get(i) || startNode.k_vals.get(i) > upperBound.k_vals.get(i)) {
+                isMatch = false;
+                break;
+            }
+        }
+        if (isMatch) nodes.add(startNode);
+
+        if (startNode.k_vals.get(comparableIndex) <= upperBound.k_vals.get(comparableIndex)){
+            if (startNode.right_child != null)
+                searchNode(startNode.right_child, lowerBound, upperBound, nodes);
+        }
+    }
+
+    private void correctBounds (Node lowerBound, Node upperBound) {
+        for (int i=0; i<nodeSize; i++) {
+            if (lowerBound.k_vals.get(i) > upperBound.k_vals.get(i)) {
+                double temp = lowerBound.k_vals.get(i);
+                lowerBound.k_vals.set(i, upperBound.k_vals.get(i));
+                upperBound.k_vals.set(i, temp);
+            }
+        }
+    }
 
 
 }
