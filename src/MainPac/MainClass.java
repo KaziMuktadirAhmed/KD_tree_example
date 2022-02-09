@@ -19,6 +19,11 @@ public class MainClass {
         KD_tree tree = new KD_tree(nodeSize);
         takeInput(tree);
         tree.traverseTree();
+
+        ArrayList<Double> dbl = new ArrayList<Double>();
+        dbl.add(6.0); dbl.add(6.0); dbl.add(1.0);
+        Node node = tree.searchNode(new Node(dbl));
+        System.out.println(node.k_vals);
     }
 
     public static void takeInput(KD_tree tree) throws FileNotFoundException {

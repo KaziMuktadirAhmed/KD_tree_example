@@ -116,11 +116,11 @@ public class KD_tree {
             int comparableIndex = startNode.currentLevel%nodeSize;
             if (startNode.k_vals.get(comparableIndex) > node.k_vals.get(comparableIndex)) {
                 if (startNode.left_child != null)
-                    searchNode(startNode.left_child, node);
+                    returnNode = searchNode(startNode.left_child, node);
 
             } else {
                 if (startNode.right_child != null)
-                    searchNode(startNode.right_child, node);
+                    returnNode = searchNode(startNode.right_child, node);
             }
         }
 
