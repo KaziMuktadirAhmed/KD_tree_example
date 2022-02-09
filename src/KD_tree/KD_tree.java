@@ -18,6 +18,9 @@ public class KD_tree {
     }
 
     public void traverseTree () {
+        if (root == null) {
+            return;
+        }
         traverseTree(root);
     }
 
@@ -87,33 +90,41 @@ public class KD_tree {
     public Node searchNode (Node node) {
         Node returnNode;
 
-        if (root == null) {
+        if (root == null)
             returnNode = null;
-
-        } else if (root.left_child == null && root.right_child == null) {
-            boolean isMatch = true;
-
-            for (int i=0; i<nodeSize; ++i) {
-                if (!Objects.equals(root.k_vals.get(i), node.k_vals.get(i))) {
-                    isMatch = false;
-                    break;
-                }
-            }
-
-            if (isMatch) returnNode = root;
-            else returnNode = null;
-
-        } else {
+        else
             returnNode = searchNode(root, node);
-        }
 
         return returnNode;
     }
 
     public Node searchNode (Node startNode, Node node) {
         Node returnNode = null;
-        return returnNode;
+        boolean isMatch = true;
 
+        for (int i=0; i<nodeSize; i++) {
+            if (!Objects.equals(startNode.k_vals.get(i), node.k_vals.get(i))) {
+               isMatch = false;
+               break;
+            }
+        }
+
+        if (isMatch) {
+            returnNode = startNode;
+
+        } else {
+            int comparableIndex = startNode.currentLevel%nodeSize;
+            if (startNode.k_vals.get(comparableIndex) > node.k_vals.get(comparableIndex)) {
+                if (startNode.left_child != null)
+                    searchNode(startNode.left_child, node);
+
+            } else {
+                if (startNode.right_child != null)
+                    searchNode(startNode.right_child, node);
+            }
+        }
+
+        return returnNode;
     }
 
 

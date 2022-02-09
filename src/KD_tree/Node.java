@@ -3,7 +3,7 @@ package KD_tree;
 import java.util.ArrayList;
 
 public class Node {
-    ArrayList<Double> k_vals;
+    public ArrayList<Double> k_vals;
     public int currentLevel;
 
     public Node right_child;
