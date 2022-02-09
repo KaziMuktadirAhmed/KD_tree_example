@@ -139,7 +139,6 @@ public class KD_tree {
     }
 
     private void searchNode (Node startNode, Node lowerBound, Node upperBound, ArrayList<Node> nodes) {
-//        if ()
         int comparableIndex = startNode.currentLevel%nodeSize;
         if (startNode.k_vals.get(comparableIndex) > lowerBound.k_vals.get(comparableIndex)) {
             if (startNode.left_child != null)
