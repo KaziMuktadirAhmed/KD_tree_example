@@ -15,15 +15,15 @@ public class MainClass {
     }
 
     public static void test() throws FileNotFoundException {
-        int nodeSize = 3;
+        int nodeSize = 2;
         KD_tree tree = new KD_tree(nodeSize);
         takeInput(tree);
         tree.traverseTree();
 
         ArrayList<Double> dbl = new ArrayList<Double>();
         ArrayList<Double> dbl1 = new ArrayList<Double>();
-        dbl.add(5.0); dbl.add(8.0); dbl.add(2.0);
-        dbl1.add(5.0); dbl1.add(8.0); dbl1.add(7.0);
+        dbl.add(5.0); dbl.add(1.0);
+        dbl1.add(5.0); dbl1.add(8.0);
         Node node = tree.searchNode(new Node(dbl));
         System.out.println(node.k_vals);
 
