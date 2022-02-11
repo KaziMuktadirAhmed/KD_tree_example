@@ -25,11 +25,12 @@ public class MainClass {
         dbl.add(5.0); dbl.add(8.0);
         dbl1.add(6.0); dbl1.add(0.0);
         Node node = tree.searchNode(new Node(dbl));
-        System.out.println(node.k_vals);
+        System.out.println("Single node search result " + node.k_vals);
 
+        System.out.println("Ranged search result: ");
         ArrayList<Node> nodes = tree.searchNode(tree.root, new Node(dbl), new Node(dbl1));
-        for (int i=0; i<nodes.size(); i++) {
-            System.out.println(nodes.get(i).k_vals);
+        for (Node value : nodes) {
+            System.out.print(value.k_vals + " ");
         }
     }
 
