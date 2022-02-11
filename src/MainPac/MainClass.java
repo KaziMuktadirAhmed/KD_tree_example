@@ -20,10 +20,10 @@ public class MainClass {
         takeInput(tree);
         tree.traverseTree();
 
-        ArrayList<Double> dbl = new ArrayList<Double>();
-        ArrayList<Double> dbl1 = new ArrayList<Double>();
-        dbl.add(1.0); dbl.add(2.0);
-        dbl1.add(6.0); dbl1.add(0.0);
+        ArrayList<Double> dbl = new ArrayList<>();
+        ArrayList<Double> dbl1 = new ArrayList<>();
+        dbl.add(0.0); dbl.add(0.0);
+        dbl1.add(100.0); dbl1.add(100.0);
         Node node = tree.searchNode(new Node(dbl));
 
         if (node != null)
