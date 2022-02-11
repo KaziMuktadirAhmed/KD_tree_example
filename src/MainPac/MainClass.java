@@ -22,10 +22,14 @@ public class MainClass {
 
         ArrayList<Double> dbl = new ArrayList<Double>();
         ArrayList<Double> dbl1 = new ArrayList<Double>();
-        dbl.add(5.0); dbl.add(8.0);
+        dbl.add(1.0); dbl.add(2.0);
         dbl1.add(6.0); dbl1.add(0.0);
         Node node = tree.searchNode(new Node(dbl));
-        System.out.println("Single node search result " + node.k_vals);
+
+        if (node != null)
+            System.out.println("Single node search result " + node.k_vals);
+        else
+            System.out.println("node not found");
 
         System.out.println("Ranged search result between " + dbl + " and " + dbl1);
         ArrayList<Node> nodes = tree.searchNode(tree.root, new Node(dbl), new Node(dbl1));
