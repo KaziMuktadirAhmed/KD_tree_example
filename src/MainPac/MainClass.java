@@ -27,7 +27,7 @@ public class MainClass {
         Node node = tree.searchNode(new Node(dbl));
         System.out.println("Single node search result " + node.k_vals);
 
-        System.out.println("Ranged search result: ");
+        System.out.println("Ranged search result between " + dbl + " and " + dbl1);
         ArrayList<Node> nodes = tree.searchNode(tree.root, new Node(dbl), new Node(dbl1));
         for (Node value : nodes) {
             System.out.print(value.k_vals + " ");
